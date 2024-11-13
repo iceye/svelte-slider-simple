@@ -1,19 +1,20 @@
-# svelte-slider
+# svelte-slider-simple
 
-Simple svelte range slider component. [demo](https://svelte.dev/repl/e93d43c42b434e3aa3e2a5815f805c75?version=3.22.3)
+Simple svelte range slider component using the code before the fork. [demo](https://svelte.dev/repl/e93d43c42b434e3aa3e2a5815f805c75?version=3.22.3)
+This repo has a simpler version to bind value directly to a variable, unfortunately range slider cannot be used in this configuration.
 
 ## Install
 
 Install with npm or yarn:
 
 ```bash
-npm i -D @bulatdashiev/svelte-slider
+npm i -D @iceye/svelte-slider-simple
 ```
 
 Then import `Slider` component to your Svelte app.
 
 ```js
-import Slider from '@bulatdashiev/svelte-slider';
+import Slider from '@iceye/svelte-slider-simple';
 ```
 
 ## Usage
@@ -25,50 +26,40 @@ import Slider from '@bulatdashiev/svelte-slider';
 
 ### Range input
 ```html
-<Slider bind:value range />
+<Slider bind:value />
 ```
 
 ### Min, max and step
 ```html
-<Slider min="-50" max="50" step="10" bind:value range />
+<Slider min="-50" max="50" step="10" bind:value />
 ```
 
-You can `bind`  to min, max and value, slider will change according to props change
+You can `bind`  value, slider will change according to props change
 
 ### Slots
 
-Default slot
+Simple slot only
 ```html
 <Slider bind:value>
   <span style="font-size: 20px;">&#128079;</span>
 </Slider>
 ```
 
-Left, right slots
-```html
-<Slider bind:value range>
-  <span slot="left" style="font-size: 20px;">&#128078;</span>
-  <span slot="right" style="font-size: 20px;">&#128077;</span>
-</Slider>
-```
 
 ## Props
 
 |Name|Type|Default|Description|
 |---|---|---|---|
-|value|Array [number, number]|`[min, max]`||
+|value|number|`50`||
 |min|number|`0`||
 |max|number|`100`||
 |step|number|`1`||
 |name|Array [string, string]|empty array|Provide names to inputs if you want use slider in form input|
-|range|boolean|`false`|Set to `true` to use range input|
-|order|boolean|`false`|Set to `true` if you want value[0] always be greater then value[1]|
 
 ## Slots
 
-- `default` - customizes both thumbs if `left` or `right` slots isn't provided
+- `default` - customizes both thumbs if `left` slot isn't provided
 - `left` - provide to customize left thumb
-- `right` - provide to customize right thumb
 
 
 ## Events
@@ -94,4 +85,4 @@ set `--thumb-bg` to `transparent` if you use custom thumb
 
 ## License
 
-MIT &copy; BulatDashiev
+MIT &copy; iceye

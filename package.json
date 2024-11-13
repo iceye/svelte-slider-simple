@@ -1,6 +1,6 @@
 {
-  "name": "svelte-slider-simple",
-  "version": "1.0.4",
+  "name": "@iceye/svelte-slider-simple",
+  "version": "1.0.5",
   "description": "Simple slider for Svelte 3/4",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
