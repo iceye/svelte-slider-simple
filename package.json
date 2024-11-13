@@ -1,7 +1,7 @@
 {
-  "name": "@bulatdashiev/svelte-slider",
-  "version": "1.0.3",
-  "description": "Simple range slider for Svelte 3",
+  "name": "svelte-slider-simple",
+  "version": "1.0.4",
+  "description": "Simple slider for Svelte 3/4",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -17,8 +17,7 @@
   },
   "keywords": [
     "svelte",
-    "slider",
-    "range"
+    "slider"
   ],
   "files": [
     "src",
@@ -26,12 +25,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BulatDashiev/svelte-slider.git"
+    "url": "git+https://github.com/iceye/svelte-slider.git"
   },
   "bugs": {
-    "url": "https://github.com/BulatDashiev/svelte-slider/issues"
+    "url": "https://github.com/iceye/svelte-slider/issues"
   },
-  "homepage": "https://github.com/BulatDashiev/svelte-slider#readme",
-  "author": "BulatDashiev",
+  "homepage": "https://github.com/iceye/svelte-slider#readme",
+  "author": "Iceye",
   "license": "MIT"
 }

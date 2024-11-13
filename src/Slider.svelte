@@ -1,27 +1,17 @@
-<input type="number" value={value[0]} name={name[0]} />
-{#if range}
-  <input type="number" value={value[1]} name={name[1]} />
-{/if}
+<input type="number" value={value} name={name} />
+
 <div class="track">
   <div
     class="progress"
     style={progress} />
-  <Thumb bind:pos={pos[0]} on:active={({ detail: v }) => active = v}>
+  <Thumb bind:pos={pos} on:active={({ detail: v }) => active = v}>
     <slot name="left">
       <slot>
         <div class="thumb" />
       </slot>
     </slot>
   </Thumb>
-  {#if range}
-    <Thumb bind:pos={pos[1]} on:active={({ detail: v }) => active = v}>
-      <slot name="right">
-        <slot>
-          <div class="thumb" />
-        </slot>
-      </slot>
-    </Thumb>
-  {/if}
+  
 </div>
 
 <script>
@@ -30,12 +20,12 @@
 
   const dispatch = createEventDispatcher();
 
-  let name = [];
+  let name = "";
   let range = false;
   let min = 0;
   let max = 100;
   let step = 1;
-  let value = [min, max];
+  let value = min;
   let pos;
   let active = false;
   let order = false;
@@ -44,30 +34,23 @@
 
   $: if (active) setValue(pos);
   $: if (!active) setPos(value);
-  $: if (range && order && active) pos = checkPos(pos);
   $: min, max, clamp();
   $: progress = `
-    left: ${range ? Math.min(pos[0], pos[1]) * 100 : 0}%;
-    right: ${100 - Math.max(pos[0], (range ? pos[1] : pos[0])) * 100}%;
+    left: ${ 0}%;
+    right: ${100 - pos * 100}%;
   `;
 
   function setValue(pos) {
     const offset = min % step;
     const width = max - min
-    value = pos
-      .map(v => min + v * width)
-      .map(v => Math.round((v - offset) / step) * step + offset);
+    value = min + pos * width;
+    value = Math.round((value - offset) / step) * step + offset;
+   
     dispatch("input", value);
   }
 
   function setPos(value) {
-    pos = value
-      .map(v => Math.min(Math.max(v, min), max))
-      .map(v => (v - min) / (max - min));
-  }
-
-  function checkPos(pos) {
-    return [Math.min(...pos), Math.max(...pos)];
+    pos = (Math.min(Math.max(value, min), max) - min) / (max - min);
   }
 
   function clamp() {
